@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>StartLauncherWindow</class>
+ <widget class="QMainWindow" name="StartLauncherWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>514</width>
+    <height>190</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>VRML - Browser &quot;Limur&quot;</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QPushButton" name="selectFileButton">
+    <property name="geometry">
+     <rect>
+      <x>370</x>
+      <y>10</y>
+      <width>111</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Select File</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="exitButton">
+    <property name="geometry">
+     <rect>
+      <x>390</x>
+      <y>120</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Exit</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="aboutButton">
+    <property name="geometry">
+     <rect>
+      <x>390</x>
+      <y>80</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>About</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="LimurLabel">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>30</y>
+      <width>331</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>15</pointsize>
+      <weight>75</weight>
+      <italic>false</italic>
+      <bold>true</bold>
+      <underline>false</underline>
+      <strikeout>false</strikeout>
+      <stylestrategy>PreferAntialias</stylestrategy>
+      <kerning>true</kerning>
+     </font>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>514</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>FileSelectWindow</class>
+ <widget class="QDialog" name="FileSelectWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>592</width>
+    <height>455</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>File Selection</string>
+  </property>
+  <widget class="QTreeView" name="treeView">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>60</y>
+     <width>391</width>
+     <height>381</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="backButton">
+   <property name="geometry">
+    <rect>
+     <x>460</x>
+     <y>392</y>
+     <width>81</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Back</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>10</y>
+     <width>191</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Find and Select VRML-file to open him</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

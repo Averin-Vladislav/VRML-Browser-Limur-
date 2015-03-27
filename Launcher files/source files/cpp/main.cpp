@@ -1,15 +1,12 @@
-#include "MyWindow.h"
 #include <QApplication>
-#include <qspinbox.h>
-#include <qslider.h>
-#include <QHBoxLayout>
+#include "startlauncherwindow.h"
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+    StartLauncherWindow *startLauncherWindow = new StartLauncherWindow();
 
-    MyWindow *window = new MyWindow;
-    window->show();
+    startLauncherWindow->show();
 
     return a.exec();
 }
