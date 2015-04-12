@@ -1,18 +1,19 @@
+#pragma once
 #include <gl\glut.h>
 
 class Figure
 {
-
 protected:
-	double rotateX;
-	double rotateY;
+	float positionX;
+	float positionY;
+	float positionZ;
 
 public:
 	Figure();
 	~Figure();
 
-	double GetRotateX();
-	double GetRotateY();
-	void Rotate(int key, int x, int y);
-	void Display();
+	virtual void draw() = 0;
+	void rotate(int x, int y, int z);
+	void scale(float x, float y, float z);
+	void translate(float x, float y, float z);
 };

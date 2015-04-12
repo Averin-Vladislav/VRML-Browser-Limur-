@@ -1,5 +1,7 @@
 #include "figureQueue.h"
 
+std::vector<std::shared_ptr<Figure>> FigureQueue::figureVector;
+
 FigureQueue::FigureQueue()
 {
 
@@ -10,17 +12,13 @@ FigureQueue::~FigureQueue()
 
 }
 
-void FigureQueue::addFigure(Figure figure)
+void FigureQueue::addFigure(std::shared_ptr<Figure> figure)
 {
 	figureVector.push_back(figure);
 }
 
-Figure FigureQueue::getFigure()
-{
-	return figureVector[figureVector.size];
-}
-
-std::vector<Figure> FigureQueue::getQueue()
+std::vector<std::shared_ptr<Figure>>& FigureQueue::getQueue() 
 {
 	return figureVector;
 }
+

@@ -1,15 +1,15 @@
+#pragma once
 #include "figure.h"
 #include <vector>
-
+#include <memory>
 class FigureQueue
 {
-	std::vector<Figure> figureVector;
+	static std::vector<std::shared_ptr<Figure>> figureVector;
 
 public:
 	FigureQueue();
 	~FigureQueue();
-
-	void addFigure(Figure figure);
-	Figure getFigure();
-	std::vector<Figure> getQueue();
+	
+	static void addFigure(std::shared_ptr<Figure> figure);
+	static std::vector<std::shared_ptr<Figure>>& getQueue();
 };

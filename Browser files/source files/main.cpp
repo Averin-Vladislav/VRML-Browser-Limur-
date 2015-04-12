@@ -3,7 +3,7 @@
 int main(int argc, char **argv)
 {
 	Browser browser(&argc, argv);
-	browser.Run();
+	browser.run();
 
 	return 0;
 }
