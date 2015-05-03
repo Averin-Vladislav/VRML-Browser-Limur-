@@ -4,13 +4,20 @@
 #define M_PI 3.14159265358979323846
 #define ANGLE_STEPSIZE 0.1f
 
-Cylinder::Cylinder(float height, float radius, float posX, float posY, float posZ)
+
+
+Cylinder::Cylinder(float height, float radius, float posX, float posY, float posZ, GLubyte colorR, GLubyte colorG, GLubyte colorB)
 {
 	rad = radius;
 	heig = height;
+
 	positionX = posX;
 	positionY = posY;
 	positionZ = posZ;
+
+	r = colorR;
+	g = colorG;
+	b = colorB;
 }
 
 Cylinder::~Cylinder()
@@ -24,10 +31,10 @@ void Cylinder::draw()
 	float y = 0.0;
 	float angle;
 
-	glColor3ub(255, 160, 100);
+	glColor3ub(r, g, b);
 	glBegin(GL_QUAD_STRIP);
 	angle = 0.0;
-	while (angle < 2 * M_PI) 
+	while (angle < 2 * M_PI)
 	{
 		x = rad * cos(angle);
 		y = rad * sin(angle);
@@ -39,7 +46,6 @@ void Cylinder::draw()
 	glVertex3f(rad + positionX, positionY, positionZ - (heig / 2));
 	glEnd();
 
-	glColor3ub(255, 50, 200);
 	glBegin(GL_POLYGON);
 	angle = 0.0;
 	while (angle < 2 * M_PI)
@@ -52,7 +58,6 @@ void Cylinder::draw()
 	glVertex3f(rad + positionX, positionY, positionZ + (heig / 2));
 	glEnd();
 
-	glColor3ub(105, 160, 100);
 	glBegin(GL_POLYGON);
 	angle = 0.0;
 	while (angle < 2 * M_PI)

@@ -6,7 +6,7 @@
 #define SCAEL_DOWN_CONST 0.9803921568627451f
 #define TRASNPARATE_CONST 0.05f
 
-void display() 
+void display()
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -17,7 +17,7 @@ void display()
 }
 
 //change glut keys constants
-void eventsHandler(int key, int x, int y) 
+void eventsHandler(int key, int x, int y)
 {
 	switch (key)
 	{
@@ -88,6 +88,8 @@ Browser::Browser(int *argcp, char **argv)
 	glutInitDisplayMode(GLUT_RGBA | GLUT_DEPTH | GLUT_DOUBLE);
 	glutInitWindowSize(640, 480);
 	glutCreateWindow("Limur");
+	Parser parser;
+	parser.run();
 	//glutFullScreen();
 }
 
@@ -98,22 +100,37 @@ Browser::~Browser()
 
 void Browser::run()
 {
-	cube1 = std::shared_ptr<Cube>(new Cube(0.5f, 0.0f, 0.5f, 0.5f));
-	sphere1 = std::shared_ptr<Sphere>(new Sphere(0.25f, 0.0f, -0.5f, 0.5f));
-	cylinder1 = std::shared_ptr<Cylinder>(new Cylinder(0.5f, 0.5f, 0.0f, -0.5f, -0.5f));
-	pyramid1 = std::shared_ptr<Pyramid>(new Pyramid(0.5, 1.0, 0.0f, 0.5f, -0.5f));
-	cone1 = std::shared_ptr<Cone>(new Cone(0.5f, 0.25f, 0.0f, 0.0f, 0.2f));
+	/*cube1 = std::shared_ptr<Cube>(new Cube(0.5f, 0.0f, 0.5f, 0.8f, 100, 150, 130));
+	sphere1 = std::shared_ptr<Sphere>(new Sphere(0.25f, 0.0f, 0.f, 0.2f, 0, 0, 250));
+	cylinder1 = std::shared_ptr<Cylinder>(new Cylinder(0.5f, 0.3f, 0.0f, -0.5f, -0.2f, 250, 230, 10));
+	pyramid1 = std::shared_ptr<Pyramid>(new Pyramid(0.5, 0.5, 0.0f, 0.5f, -0.2f, 10, 240, 70));
+	cone1 = std::shared_ptr<Cone>(new Cone(0.5f, 0.25f, 0.0f, -0.5f, 0.8f, 230, 30, 70));
+	parallelogramm1 = std::shared_ptr<Parallelogramm>(new Parallelogramm(0.3f, 1.0f, 0.5f, 0, 0.5, -0.9f, 40, 130, 200));
+	prism1 = std::shared_ptr<Prism>(new Prism(0.5f, 0.5f, 0, -0.5, -0.9, 130, 20, 10));
 
-	figureQueue.addFigure(cube1);
-	figureQueue.addFigure(sphere1);
 	figureQueue.addFigure(cylinder1);
 	figureQueue.addFigure(pyramid1);
 	figureQueue.addFigure(cone1);
+	figureQueue.addFigure(parallelogramm1);
+	figureQueue.addFigure(prism1);
+	figureQueue.addFigure(sphere1);
+	figureQueue.addFigure(cube1);*/
+
+
+	parallelogramm1 = std::shared_ptr<Parallelogramm>(new Parallelogramm(Parser::getHeight(), 
+																		 Parser::getWidth(), 
+																		 Parser::getDepth(), 
+																		 Parser::getPosX(), 
+																		 Parser::getPosY(),
+																		 Parser::getPosZ(),
+																		 Parser::getColorR(), 
+																		 Parser::getColorG(), 
+																		 Parser::getColorB()));
+	figureQueue.addFigure(parallelogramm1);
 
 	initializeSreen();
 	glutDisplayFunc(display);
 	glutSpecialFunc(eventsHandler);
-	glEnable(GL_DEPTH_TEST);
 	glutMainLoop();
 }
 
@@ -131,11 +148,11 @@ void Browser::initializeSreen()
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 	/*gluLookAt
-		(
-		3, 3, 3,
-		0, 0, 0,
-		0, 0, 1
-		);*/
+	(
+	3, 3, 3,
+	0, 0, 0,
+	0, 0, 1
+	);*/
 	gluLookAt
 		(
 		3, 0, 0,

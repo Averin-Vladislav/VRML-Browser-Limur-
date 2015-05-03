@@ -8,6 +8,10 @@ protected:
 	float positionY;
 	float positionZ;
 
+	GLubyte r;
+	GLubyte g;
+	GLubyte b;
+
 public:
 	Figure();
 	~Figure();

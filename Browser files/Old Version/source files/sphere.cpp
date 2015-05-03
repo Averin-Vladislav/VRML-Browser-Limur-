@@ -5,12 +5,28 @@
 #define RINGS 20
 #define SECTORS 32
 
-Sphere::Sphere(float radius, float posX, float posY, float posZ)
+
+
+Sphere::Sphere(float radius, float posX, float posY, float posZ, GLubyte colorR, GLubyte colorG, GLubyte colorB)
 {
+	rad = radius;
+
 	positionX = posX;
 	positionY = posY;
 	positionZ = posZ;
 
+	r = colorR;
+	g = colorG;
+	b = colorB;
+}
+
+Sphere::~Sphere()
+{
+
+}
+
+void Sphere::draw()
+{
 	float const R = 1. / (float)(RINGS - 1);
 	float const S = 1. / (float)(SECTORS - 1);
 	int r, s;
@@ -33,9 +49,9 @@ Sphere::Sphere(float radius, float posX, float posY, float posZ)
 			*t++ = s*S;
 			*t++ = r*R;
 
-			*v++ = x * radius;
-			*v++ = y * radius;
-			*v++ = z * radius;
+			*v++ = x * rad;
+			*v++ = y * rad;
+			*v++ = z * rad;
 
 			*n++ = x;
 			*n++ = y;
@@ -52,15 +68,7 @@ Sphere::Sphere(float radius, float posX, float posY, float posZ)
 			*i++ = (r + 1) * SECTORS + (s + 1);
 			*i++ = (r + 1) * SECTORS + s;
 		}
-}
 
-Sphere::~Sphere()
-{
-
-}
-
-void Sphere::draw()
-{
 	glMatrixMode(GL_MODELVIEW);
 	glPushMatrix();
 	glTranslatef(positionX, positionY, positionZ);
@@ -69,9 +77,16 @@ void Sphere::draw()
 	glEnableClientState(GL_NORMAL_ARRAY);
 	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 
+	glColor3ub(r, g, b);
+
 	glVertexPointer(3, GL_FLOAT, 0, &vertices[0]);
 	glNormalPointer(GL_FLOAT, 0, &normals[0]);
 	glTexCoordPointer(2, GL_FLOAT, 0, &texcoords[0]);
 	glDrawElements(GL_QUADS, indices.size(), GL_UNSIGNED_SHORT, &indices[0]);
+
+	glDisableClientState(GL_COLOR_ARRAY);
+	glDisableClientState(GL_VERTEX_ARRAY);
+	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+
 	glPopMatrix();
 }

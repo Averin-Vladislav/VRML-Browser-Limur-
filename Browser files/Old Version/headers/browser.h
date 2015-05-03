@@ -1,11 +1,15 @@
 #pragma once
 #include <gl\glut.h>
+#include "camera.h"
 #include "figureQueue.h"
 #include "cube.h"
 #include "sphere.h"
 #include "cylinder.h"
 #include "pyramid.h";
 #include "cone.h"
+#include "parallelogram.h"
+#include "prism.h"
+#include "parser.h"
 
 class Browser
 {
@@ -14,6 +18,8 @@ class Browser
 	std::shared_ptr<Cylinder> cylinder1;
 	std::shared_ptr<Pyramid> pyramid1;
 	std::shared_ptr<Cone> cone1;
+	std::shared_ptr<Parallelogramm> parallelogramm1;
+	std::shared_ptr<Prism> prism1;
 
 	FigureQueue figureQueue;
 
