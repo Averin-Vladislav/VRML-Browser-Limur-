@@ -4,6 +4,9 @@
 #include <QMainWindow>
 #include <QtCore>
 #include <QtGui>
+#include <QProcess>
+#include <QUrl>
+#include <QDesktopServices>
 #include "ui_fileselectwindow.h"
 #include "fileselectwindow.h"
 
@@ -21,13 +24,18 @@ public:
     explicit StartLauncherWindow(QWidget *parent = 0);
     ~StartLauncherWindow();
 
-public slots:
-    void OpenSelectWindow();
-    void OpenAboutMessage();
+private slots:
+    void slotOpenSelectWindow();
+    void slotOpenAboutMessage();
+    void slotOpenKeysMessage();
+    void slotGetPath(QString _filePath);
+    void slotOpenFile();
+    void slotEditFile();
 
 private:
     Ui::StartLauncherWindow *ui;
     FileSelectWindow *fileSelectWindow;
+    QString filePath;
 };
 
 #endif // STARTLAUNCHERWINDOW_H

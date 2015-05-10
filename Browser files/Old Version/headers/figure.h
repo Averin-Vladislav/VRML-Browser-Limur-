@@ -3,15 +3,6 @@
 
 class Figure
 {
-protected:
-	float positionX;
-	float positionY;
-	float positionZ;
-
-	GLubyte r;
-	GLubyte g;
-	GLubyte b;
-
 public:
 	Figure();
 	~Figure();
@@ -20,4 +11,13 @@ public:
 	void rotate(int x, int y, int z);
 	void scale(float x, float y, float z);
 	void translate(float x, float y, float z);
+
+protected:
+	float positionX;
+	float positionY;
+	float positionZ;
+
+	GLubyte colorR;
+	GLubyte colorG;
+	GLubyte colorB;
 };

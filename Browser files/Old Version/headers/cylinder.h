@@ -6,13 +6,16 @@
 
 class Cylinder : public Figure
 {
-
-	float heig;
-	float rad;
-
 public:
-	Cylinder(float height, float radius, float x, float y, float z, GLubyte colorR, GLubyte colorG, GLubyte colorB);
+	Cylinder(float _height, float _radius,
+			 float _positionX, float _positionY, float _positionZ,
+			 GLubyte _colorR, GLubyte _colorG, GLubyte _colorB);
+
 	~Cylinder();
 
 	void draw();
+
+private:
+	float height;
+	float radius;
 };

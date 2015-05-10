@@ -6,18 +6,18 @@
 
 
 
-Cone::Cone(float height, float radius, float posX, float posY, float posZ, GLubyte colorR, GLubyte colorG, GLubyte colorB)
+Cone::Cone(float _height, float _radius, float _positionX, float _positionY, float _positionZ, GLubyte _colorR, GLubyte _colorG, GLubyte _colorB)
 {
-	rad = radius;
-	heig = height;
+	radius = _radius;
+	height = _height;
 
-	positionX = posX;
-	positionY = posY;
-	positionZ = posZ;
+	positionX = _positionX;
+	positionY = _positionY;
+	positionZ = _positionZ;
 
-	r = colorR;
-	g = colorG;
-	b = colorB;
+	colorR = _colorR;
+	colorG = _colorG;
+	colorB = _colorB;
 }
 
 Cone::~Cone()
@@ -31,16 +31,16 @@ void Cone::draw()
 	float y = 0.0;
 	float angle;
 
-	glColor3ub(r, g, b);
+	glColor3ub(colorR, colorG, colorB);
 
 	glBegin(GL_POLYGON);
 	angle = 0.0;
-	glVertex3f(positionX, positionY, positionZ + (heig / 2));
+	glVertex3f(positionX, positionY, positionZ + (height / 2));
 	while (angle <= 2 * M_PI + 1)
 	{
-		x = rad * cos(angle);
-		y = rad * sin(angle);
-		glVertex3f(x + positionX, y + positionY, positionZ - (heig / 2));
+		x = radius * cos(angle);
+		y = radius * sin(angle);
+		glVertex3f(x + positionX, y + positionY, positionZ - (height / 2));
 		angle = angle + ANGLE_STEPSIZE;
 	}
 	glEnd();
@@ -49,9 +49,9 @@ void Cone::draw()
 	angle = 0.0;
 	while (angle < 2 * M_PI)
 	{
-		x = rad * cos(angle);
-		y = rad * sin(angle);
-		glVertex3f(x + positionX, y + positionY, positionZ - (heig / 2));
+		x = radius * cos(angle);
+		y = radius * sin(angle);
+		glVertex3f(x + positionX, y + positionY, positionZ - (height / 2));
 		angle = angle + ANGLE_STEPSIZE;
 	}
 	glEnd();

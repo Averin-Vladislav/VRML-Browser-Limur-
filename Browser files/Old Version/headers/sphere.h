@@ -7,17 +7,19 @@
 
 class Sphere : public Figure
 {
+public:
+	Sphere(float _radius,
+		   float _positionX, float _positionY, float _positionZ,
+		   GLubyte _colorR, GLubyte _colorG, GLubyte _colorB);
+	~Sphere();
 
+	void draw();
+
+private:
 	std::vector<float> vertices;
 	std::vector<float> normals;
 	std::vector<float> texcoords;
 	std::vector<short> indices;
 
-	float rad;
-
-public:
-	Sphere(float radius, float posX, float posY, float posZ, GLubyte colorR, GLubyte colorG, GLubyte colorB);
-	~Sphere();
-
-	void draw();
+	float radius;
 };

@@ -3,8 +3,10 @@
 
 #define ROTATE_CONST 1
 #define SCALE_UP_CONST 1.02f
-#define SCAEL_DOWN_CONST 0.9803921568627451f
+#define SCALE_DOWN_CONST 0.9803921568627451f
 #define TRASNPARATE_CONST 0.05f
+
+
 
 void display()
 {
@@ -16,45 +18,54 @@ void display()
 	glutSwapBuffers();
 }
 
-//change glut keys constants
-void eventsHandler(int key, int x, int y)
+void keyboardEeventsHandler(unsigned char key, int x, int y)
 {
 	switch (key)
 	{
-	case GLUT_KEY_F1:
+	case '1':
 		for (auto& figure : FigureQueue::getQueue())
 			figure->rotate(0, ROTATE_CONST, 0);
 		break;
-	case GLUT_KEY_F2:
+	case '3':
 		for (auto& figure : FigureQueue::getQueue())
 			figure->rotate(0, -ROTATE_CONST, 0);
 		break;
-	case GLUT_KEY_F3:
+	case '4':
 		for (auto& figure : FigureQueue::getQueue())
 			figure->rotate(ROTATE_CONST, 0, 0);
 		break;
-	case GLUT_KEY_F4:
+	case '6':
 		for (auto& figure : FigureQueue::getQueue())
 			figure->rotate(-ROTATE_CONST, 0, 0);
 		break;
-	case GLUT_KEY_F5:
+	case '7':
 		for (auto& figure : FigureQueue::getQueue())
 			figure->rotate(0, 0, ROTATE_CONST);
 		break;
-	case GLUT_KEY_F6:
+	case '9':
 		for (auto& figure : FigureQueue::getQueue())
 			figure->rotate(0, 0, -ROTATE_CONST);
 		break;
 
-	case GLUT_KEY_F9:
+	case '+':
 		for (auto& figure : FigureQueue::getQueue())
 			figure->scale(SCALE_UP_CONST, SCALE_UP_CONST, SCALE_UP_CONST);
 		break;
-	case GLUT_KEY_F10:
+	case '-':
 		for (auto& figure : FigureQueue::getQueue())
-			figure->scale(SCAEL_DOWN_CONST, SCAEL_DOWN_CONST, SCAEL_DOWN_CONST);
+			figure->scale(SCALE_DOWN_CONST, SCALE_DOWN_CONST, SCALE_DOWN_CONST);
 		break;
 
+	case 27:
+		exit(0);
+		break;
+	}
+}
+
+void specialEventsHandler(int key, int x, int y)
+{
+	switch (key)
+	{
 		//incorrect trasparate
 	case GLUT_KEY_UP:
 		for (auto& figure : FigureQueue::getQueue())
@@ -72,10 +83,6 @@ void eventsHandler(int key, int x, int y)
 		for (auto& figure : FigureQueue::getQueue())
 			figure->translate(0.0f, -TRASNPARATE_CONST, 0.0f);
 		break;
-
-	case GLUT_KEY_END:
-		exit(0);
-		break;
 	}
 
 	glEnable(GL_DEPTH_TEST);
@@ -89,7 +96,7 @@ Browser::Browser(int *argcp, char **argv)
 	glutInitWindowSize(640, 480);
 	glutCreateWindow("Limur");
 	Parser parser;
-	parser.run();
+	parser.run(argcp, argv);
 	//glutFullScreen();
 }
 
@@ -105,19 +112,18 @@ void Browser::run()
 	cylinder1 = std::shared_ptr<Cylinder>(new Cylinder(0.5f, 0.3f, 0.0f, -0.5f, -0.2f, 250, 230, 10));
 	pyramid1 = std::shared_ptr<Pyramid>(new Pyramid(0.5, 0.5, 0.0f, 0.5f, -0.2f, 10, 240, 70));
 	cone1 = std::shared_ptr<Cone>(new Cone(0.5f, 0.25f, 0.0f, -0.5f, 0.8f, 230, 30, 70));
-	parallelogramm1 = std::shared_ptr<Parallelogramm>(new Parallelogramm(0.3f, 1.0f, 0.5f, 0, 0.5, -0.9f, 40, 130, 200));
+	parallelepiped1 = std::shared_ptr<Parallelepiped>(new Parallelepiped(0.3f, 1.0f, 0.5f, 0, 0.5, -0.9f, 40, 130, 200));
 	prism1 = std::shared_ptr<Prism>(new Prism(0.5f, 0.5f, 0, -0.5, -0.9, 130, 20, 10));
 
 	figureQueue.addFigure(cylinder1);
 	figureQueue.addFigure(pyramid1);
 	figureQueue.addFigure(cone1);
-	figureQueue.addFigure(parallelogramm1);
+	figureQueue.addFigure(parallelepiped1);
 	figureQueue.addFigure(prism1);
 	figureQueue.addFigure(sphere1);
 	figureQueue.addFigure(cube1);*/
 
-
-	parallelogramm1 = std::shared_ptr<Parallelogramm>(new Parallelogramm(Parser::getHeight(), 
+	parallelepiped1 = std::shared_ptr<Parallelepiped>(new Parallelepiped(Parser::getHeight(),
 																		 Parser::getWidth(), 
 																		 Parser::getDepth(), 
 																		 Parser::getPosX(), 
@@ -126,11 +132,12 @@ void Browser::run()
 																		 Parser::getColorR(), 
 																		 Parser::getColorG(), 
 																		 Parser::getColorB()));
-	figureQueue.addFigure(parallelogramm1);
+	figureQueue.addFigure(parallelepiped1);
 
 	initializeSreen();
 	glutDisplayFunc(display);
-	glutSpecialFunc(eventsHandler);
+	glutKeyboardFunc(keyboardEeventsHandler);
+	glutSpecialFunc(specialEventsHandler);
 	glutMainLoop();
 }
 
@@ -147,12 +154,7 @@ void Browser::initializeSreen()
 
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
-	/*gluLookAt
-	(
-	3, 3, 3,
-	0, 0, 0,
-	0, 0, 1
-	);*/
+
 	gluLookAt
 		(
 		3, 0, 0,

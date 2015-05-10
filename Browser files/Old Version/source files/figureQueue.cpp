@@ -2,6 +2,8 @@
 
 std::vector<std::shared_ptr<Figure>> FigureQueue::figureVector;
 
+
+
 FigureQueue::FigureQueue()
 {
 

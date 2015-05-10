@@ -8,27 +8,15 @@
 #include <map>
 #include <functional>
 
-//typedef int FigureQueue;
+
 
 class Parser
 {
-	static float height;
-	static float width;
-	static float depth;
-	static GLubyte colorR;
-	static GLubyte colorG;
-	static GLubyte colorB;
-	static float posX;
-	static float posY;
-	static float posZ;
-
-	//std::map<std::string, std::function<void()>> map;
-	//FigureQueue queue;
 public:
 	Parser();
 	~Parser();
 
-	void run();
+	void run(int*, char**);
 	static float getHeight();
 	static float getWidth();
 	static float getDepth();
@@ -38,4 +26,15 @@ public:
 	static float getPosX();
 	static float getPosY();
 	static float getPosZ();
+
+private:
+	static float height;
+	static float width;
+	static float depth;
+	static GLubyte colorR;
+	static GLubyte colorG;
+	static GLubyte colorB;
+	static float posX;
+	static float posY;
+	static float posZ;
 };

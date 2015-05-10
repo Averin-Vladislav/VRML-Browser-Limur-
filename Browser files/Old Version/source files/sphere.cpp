@@ -7,17 +7,17 @@
 
 
 
-Sphere::Sphere(float radius, float posX, float posY, float posZ, GLubyte colorR, GLubyte colorG, GLubyte colorB)
+Sphere::Sphere(float _radius, float _positionX, float _positionY, float _positionZ, GLubyte _colorR, GLubyte _colorG, GLubyte _colorB)
 {
-	rad = radius;
+	radius = _radius;
 
-	positionX = posX;
-	positionY = posY;
-	positionZ = posZ;
+	positionX = _positionX;
+	positionY = _positionY;
+	positionZ = _positionZ;
 
-	r = colorR;
-	g = colorG;
-	b = colorB;
+	colorR = _colorR;
+	colorG = _colorG;
+	colorB = _colorB;
 }
 
 Sphere::~Sphere()
@@ -49,9 +49,9 @@ void Sphere::draw()
 			*t++ = s*S;
 			*t++ = r*R;
 
-			*v++ = x * rad;
-			*v++ = y * rad;
-			*v++ = z * rad;
+			*v++ = x * radius;
+			*v++ = y * radius;
+			*v++ = z * radius;
 
 			*n++ = x;
 			*n++ = y;
@@ -77,7 +77,7 @@ void Sphere::draw()
 	glEnableClientState(GL_NORMAL_ARRAY);
 	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 
-	glColor3ub(r, g, b);
+	glColor3ub(colorR, colorG, colorB);
 
 	glVertexPointer(3, GL_FLOAT, 0, &vertices[0]);
 	glNormalPointer(GL_FLOAT, 0, &normals[0]);

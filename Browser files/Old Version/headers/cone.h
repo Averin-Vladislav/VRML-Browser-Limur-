@@ -6,13 +6,14 @@
 
 class Cone : public Figure
 {
-
-	float heig;
-	float rad;
-
 public:
-	Cone(float height, float radius, float x, float y, float z, GLubyte colorR, GLubyte colorG, GLubyte colorB);
+	Cone(float _height, float _radius,
+		 float _positionX, float _positionY, float _positionZ,
+		 GLubyte _colorR, GLubyte _colorG, GLubyte _colorB);
 	~Cone();
 
+private:
 	void draw();
+	float height;
+	float radius;
 };

@@ -4,8 +4,10 @@
 #include <QDialog>
 #include <QtCore>
 #include <QtGui>
+#include <qfilesystemmodel.h>
 #include "ui_startlauncherwindow.h"
 #include "startlauncherwindow.h"
+#include "qfileinfo.h"
 
 class StartLauncherWindow;
 
@@ -22,12 +24,19 @@ public:
     ~FileSelectWindow();
 
 public slots:
-    void OpenStartWindow();
+    void slotOpenStartWindow();
+    void slotOnDoubleClicked(QModelIndex index);
 
 private:
     Ui::FileSelectWindow *ui;
     QDirModel *model;
     StartLauncherWindow *startLauncherWindow;
+
+    QModelIndex index;
+    QFileSystemModel *filemodel;
+
+signals:
+    void signalThrowPath(QString string);
 };
 
 #endif // FILESELECTWINDOW_H

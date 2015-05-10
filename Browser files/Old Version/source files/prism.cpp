@@ -3,18 +3,18 @@
 #define threeSQRT 1.732f
 
 
-Prism::Prism(float sideSize, float hight, float posX, float posY, float posZ, GLubyte colorR, GLubyte colorG, GLubyte colorB)
+Prism::Prism(float _sideSize, float _height, float _positionX, float _positionY, float _positionZ, GLubyte _colorR, GLubyte _colorG, GLubyte _colorB)
 {
-	dot[0][0] = posX - ((threeSQRT / 2.0) * sideSize * (1.0 / 3.0)); dot[0][1] = posY - (sideSize / 2); dot[0][2] = posZ - (hight / 2);
-	dot[1][0] = posX - ((threeSQRT / 2.0) * sideSize * (1.0 / 3.0)); dot[1][1] = posY + (sideSize / 2); dot[1][2] = posZ - (hight / 2);
-	dot[2][0] = posX + ((threeSQRT / 2.0) * sideSize * (2.0 / 3.0)); dot[2][1] = posY;                  dot[2][2] = posZ - (hight / 2);
-	dot[3][0] = posX - ((threeSQRT / 2.0) * sideSize * (1.0 / 3.0)); dot[3][1] = posY - (sideSize / 2); dot[3][2] = posZ + (hight / 2);
-	dot[4][0] = posX - ((threeSQRT / 2.0) * sideSize * (1.0 / 3.0)); dot[4][1] = posY + (sideSize / 2); dot[4][2] = posZ + (hight / 2);
-	dot[5][0] = posX + ((threeSQRT / 2.0) * sideSize * (2.0 / 3.0)); dot[5][1] = posY;                  dot[5][2] = posZ + (hight / 2);
+	dot[0][0] = _positionX - ((threeSQRT / 2.0) * _sideSize * (1.0 / 3.0)); dot[0][1] = _positionY - (_sideSize / 2); dot[0][2] = _positionZ - (_height / 2);
+	dot[1][0] = _positionX - ((threeSQRT / 2.0) * _sideSize * (1.0 / 3.0)); dot[1][1] = _positionY + (_sideSize / 2); dot[1][2] = _positionZ - (_height / 2);
+	dot[2][0] = _positionX + ((threeSQRT / 2.0) * _sideSize * (2.0 / 3.0)); dot[2][1] = _positionY;                  dot[2][2] = _positionZ - (_height / 2);
+	dot[3][0] = _positionX - ((threeSQRT / 2.0) * _sideSize * (1.0 / 3.0)); dot[3][1] = _positionY - (_sideSize / 2); dot[3][2] = _positionZ + (_height / 2);
+	dot[4][0] = _positionX - ((threeSQRT / 2.0) * _sideSize * (1.0 / 3.0)); dot[4][1] = _positionY + (_sideSize / 2); dot[4][2] = _positionZ + (_height / 2);
+	dot[5][0] = _positionX + ((threeSQRT / 2.0) * _sideSize * (2.0 / 3.0)); dot[5][1] = _positionY;                  dot[5][2] = _positionZ + (_height / 2);
 
-	r = colorR;
-	g = colorG;
-	b = colorB;
+	colorR = _colorR;
+	colorG = _colorG;
+	colorB = _colorB;
 }
 
 Prism::~Prism()
@@ -46,7 +46,7 @@ void Prism::drawTriangle(int a, int b, int c)
 
 void Prism::draw()
 {
-	glColor3ub(r, g, b);
+	glColor3ub(colorR, colorG, colorB);
 
 	drawQuad(0, 1, 4, 3);
 	drawQuad(1, 2, 5, 4);

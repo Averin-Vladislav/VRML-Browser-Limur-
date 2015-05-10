@@ -14,15 +14,6 @@ float Parser::posX = 0;
 float Parser::posY = 0;
 float Parser::posZ = 0;
 
-//int a = 2;
-
-/*Parser::Parser() : queue(a)
-{
-FigureQueue& que = queue; FigureQueue::getQueue()
-map.insert({ std::string("width"), [&que]() -> void { } });
-map.insert({ std::string("height"), [&]() -> void {HANDLE hDTH} });
-}*/
-
 Parser::Parser()
 {
 
@@ -33,9 +24,12 @@ Parser::~Parser()
 
 }
 
-void Parser::run()
+void Parser::run(int *argcp, char **argv)
 {
-	ifstream file("sample.txt");
+	//ifstream file(argv[*argcp - 1]);
+	//std::cout << "File path: " << argv[*argcp - 1] << std::endl;
+
+	ifstream file("sample.vrml");
 
 	string line;
 	string token1, token2, token3;
@@ -45,14 +39,6 @@ void Parser::run()
 
 	if (line == "#VRML V1.0 ascii")
 	{
-		/*while (1codition) {
-		getline(file, line);
-		std::function<void()> function = map.at(line);
-		if (!function) {
-		continue;
-		}
-		function();
-		}*/
 		while (getline(file, line))
 		{
 			istringstream iss(line);

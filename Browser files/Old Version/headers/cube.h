@@ -6,12 +6,15 @@
 
 class Cube : public Figure
 {
-	float dot[8][3];
-
 public:
-	Cube(float sideSize, float posX, float posY, float posZ, GLubyte colorR, GLubyte colorG, GLubyte colorB);
+	Cube(float _sideSize,
+		 float _positionX, float _positionY, float _positionZ,
+		 GLubyte _colorR, GLubyte _colorG, GLubyte _colorB);
 	~Cube();
 
 	void drawSide(int a, int b, int c, int d);
 	void draw();
+
+private:
+	float dot[8][3];
 };

@@ -6,13 +6,16 @@
 
 class Prism : public Figure
 {
-	float dot[5][3];
-
 public:
-	Prism(float sideSize, float hight, float posX, float posY, float posZ, GLubyte colorR, GLubyte colorG, GLubyte colorB);
+	Prism(float _sideSize, float _height,
+		  float _positionX, float _positionY, float _positionZ,
+		  GLubyte _colorR, GLubyte _colorG, GLubyte _colorB);
 	~Prism();
 
 	void drawQuad(int a, int b, int c, int d);
 	void drawTriangle(int a, int b, int c);
 	void draw();
+
+private:
+	float dot[5][3];
 };
