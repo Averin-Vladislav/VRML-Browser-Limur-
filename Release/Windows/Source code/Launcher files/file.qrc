@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>limur.png</file>
+    </qresource>
+</RCC>
+
+IDI_ICON1               ICON                    "Icon1.ico"

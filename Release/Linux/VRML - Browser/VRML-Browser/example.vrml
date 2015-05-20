@@ -1,0 +1,39 @@
+#VRML V1.0 ascii
+
+
+Parallelepiped 
+{
+	height 1.5
+	width 0.2
+	depth 1.0
+	diffuseColor 40 130 200
+	translation 0 0 0
+}
+
+Sphere {
+	diffuseColor 120 30 240
+	translation 0 1.0 0
+	radius 0.3
+	}
+
+Cylinder{
+	translation 0 -1.0 0
+	radius 0.3
+	height 1.0
+	}
+
+Sphere {
+	translation 0 0 -1.0
+	diffuseColor 140 100 20
+}
+
+Prism{
+	height 0.4
+	length 0.5
+	translation 0 1.0 -1.0
+	}
+Cube {
+	length 0.7
+	translation 0 -1.0 -1.0
+	diffuseColor 10 170 210
+	}
